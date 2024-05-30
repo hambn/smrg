@@ -2,7 +2,16 @@ import socket
 from config import *
 
 TOKEN = CLIENT_CONNECT_TOKEN
+commands = """
+commands:
 
+ram     -> for getting ram metrics
+cpu     -> for getting cpu metrics
+disk    -> for getting disk metrics
+network -> for getting network metrics
+conns   -> for getting connections metrics
+
+"""
 def Client():
     try:
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,7 +36,7 @@ def start_client():
         client_socket = Client()  # Initialize the client socket
 
         while True:
-            command = input("Enter command (GET_CPU to get CPU usage): ")
+            command = input(f"{commands}enter the command you want: ")
             message = f"{TOKEN} {command}"
             client_socket.sendall(message.encode('utf-8'))
             response = receive_full_response(client_socket)
