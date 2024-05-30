@@ -1,0 +1,9 @@
+####
+# Visual Studio
+####
+/.vs
+
+####
+# Random
+####
+dump/
